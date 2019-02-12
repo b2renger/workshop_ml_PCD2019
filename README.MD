@@ -13,6 +13,8 @@ We will explore possibilities to run AI and ML algorithms with [Processing](http
   
 [Gene Kogan](http://genekogan.com/) 
 
+[Cristóbal Valenzuela](https://cvalenzuelab.com/)
+
 [Quick draw by google](https://quickdraw.withgoogle.com/)
     
 [chAIr by Philipp Schmitt](https://philippschmitt.com/work/chair)   
