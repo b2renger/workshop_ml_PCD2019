@@ -20,9 +20,9 @@
 // RUNWAY
 // www.runwayapp.ai
 
-// Facelandmarks Demo:
+// COCO-SSD Demo:
 // Receive OSC messages from Runway
-// Running face landmarks model
+// Running coco-ssd model
 
 // Import OSC
 import oscP5.*;
@@ -30,29 +30,20 @@ import netP5.*;
 
 // Runway parameters
 String runwayHost = "127.0.0.1";
-int runwayPort = 57103;
-
-int camWidth;
-int camHeight;
+int runwayPort = 57104;
+int camWidth = 600;
+int camHeight = 400;
 
 OscP5 oscP5;
 NetAddress myBroadcastLocation;
 
 // This array will hold all the humans detected
 JSONObject data;
-JSONArray face;
 
-// This are the pair of body connections we want to form. 
-// Try creating new ones!
-String[] elements = {
-  "bottom_lip", "chin", "left_eye", "left_eyebrow", "nose_bridge", "nose_tip", 
-  "right_eye", "right_eyebrow", "top_lip"
-};
 
 void setup() {
   size(800, 600);
   frameRate(25);
-
 
   OscProperties properties = new OscProperties();
   properties.setRemoteAddress("127.0.0.1", 57200);
@@ -67,44 +58,36 @@ void setup() {
 
   fill(255);
   stroke(255);
+
+  textSize(18);
+  textMode(CENTER);
+  textAlign(LEFT, TOP);
+  
+ // rectMode(CORNER);
 }
 
 void draw() {
   background(0);
   fill(255);
-
-
+ // translate(width/2,0);
   if (data != null) {
+    JSONArray results = data.getJSONArray("results");
 
-    JSONArray faceElements = data.getJSONArray("landmarks");
-    JSONObject camResolution = data.getJSONObject("size");
-
-    camWidth = camResolution.getInt("width");
-    camHeight = camResolution.getInt("height");
-
-    for (int i = 0; i < elements.length; i++) {
-      // get each element that constitutes a face
-      try {
-        JSONArray coordinates = faceElements.getJSONObject(0).getJSONArray(elements[i]);
-
-        float prevX=0;
-        float prevY=0;
-        for (int j = 0; j < coordinates.size(); j++) {
-
-          JSONArray array = coordinates.getJSONArray(j);
-          float x = map(array.getFloat(0), 0, camWidth, 0, width);
-          float y = map(array.getFloat(1), 0, camHeight, 0, height);
-          ellipse(x, y, 5, 5);
-
-          if (j!=0) {
-            line(x, y, prevX, prevY);
-          }
-          prevX = x;
-          prevY = y;
-        }
-      }
-      catch (Exception e){
-      }
+    for (int i = 0; i < results.size(); i++) {
+      JSONObject object = results.getJSONObject(i);
+      String c = object.getString("class");
+      JSONArray bbox = object.getJSONArray("bbox");
+      float score = object.getFloat("score");
+      //println(score);      
+      float x = map(bbox.getFloat(0), 0, camWidth, 0, width);
+      float y = map(bbox.getFloat(1), 0, camHeight, 0, height);
+      float bbw = map(bbox.getFloat(2), 0, camWidth, 0, width);
+      float bbh = map(bbox.getFloat(3), 0, camHeight, 0, height);
+      noFill();
+      stroke(255);
+      rect(x,y,bbw,bbh);
+      text(c +" : "+ nf(score,0,4),x + 25,y);
+      
     }
   }
 }
