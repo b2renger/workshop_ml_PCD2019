@@ -20,9 +20,9 @@
 // RUNWAY
 // www.runwayapp.ai
 
-// Face Landmarks Demo:
+// Adaptative style transfer Demo:
 // Receive HTTP Data from Runway
-// Running Adaptative Style transfer model
+
 
 import java.util.Base64;
 import java.io.*;
@@ -40,19 +40,19 @@ void setup() {
   size (600, 400);
   noFill();
   stroke(0);
+  
+  frameRate(1);
 }
 
 void draw () {   
 
   JSONObject json = loadJSONObject(httpDataRoute);
-  String s = json.getString("stylizedImage"); // this returns a nulll
-  println(s);
- // println("-------------------------");
+  String s = json.getJSONObject("data").getString("stylizedImage");
+ // println(s);
+ 
 
   if (json != null) {
-    img = DecodeBase64(json2.split(",")[1]); // test with copied data from runway
-    //img = DecodeBase64(s.split(",")[1]);
-    //println(img);
+    img = DecodeBase64(s.split(",")[1]); // test with copied data from runway
     image(img, 0, 0);
   }
 }
