@@ -5,6 +5,8 @@ We will explore possibilities to run AI and ML algorithms with [Processing](http
 
 # Références artistiques
 
+## Artistes
+
 [Mario Klingemann](http://quasimondo.com/) 
   
 - https://www.sothebys.com/en/articles/artificial-intelligence-and-the-art-of-mario-klingemann
@@ -14,6 +16,8 @@ We will explore possibilities to run AI and ML algorithms with [Processing](http
 [Gene Kogan](http://genekogan.com/) 
 
 [Cristóbal Valenzuela](https://cvalenzuelab.com/)
+
+## Projets
 
 [Quick draw by google](https://quickdraw.withgoogle.com/)
     
