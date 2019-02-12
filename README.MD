@@ -124,6 +124,9 @@ Méthode plus perfectionnée de style transfer.
 Recevoir une image provenant de la runway dans processing via http (le code osc n'est pas supporté pour l'instant) :
 - runway_processing_http/adaptative_style_transfer
 
+Envoyer une image depuis p5js à runway
+- runway_p5js_socketio/adaptative_file_transfer_send
+
 
 ## Classifiers (ml5js)
 
