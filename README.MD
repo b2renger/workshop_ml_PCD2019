@@ -29,6 +29,8 @@ We will explore possibilities to run AI and ML algorithms with [Processing](http
  
 [ai.experiments](https://experiments.withgoogle.com/collection/ai)
 
+[magenta](https://magenta.tensorflow.org/demos/web/)
+
 [img2txt2img2txt](https://b2renger.github.io/Runway-experiment-img2txt2img2txt/index.html)
     
 [esops fables](https://towardsdatascience.com/lets-read-a-story-a-study-on-storytelling-for-children-using-machine-learning-tools-1b631bbbffac)
