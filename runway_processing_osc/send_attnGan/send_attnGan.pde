@@ -20,8 +20,8 @@
 // RUNWAY
 // www.runwayapp.ai
 
-// Adaptative style transfer Demo:
-// Receive OSC base64 images from Runway
+// AttnGan demo
+// Send a string and Receive OSC base64 images from Runway
 
 
 // Import OSC
@@ -97,19 +97,14 @@ void keyPressed() {
     JSONObject  json = new JSONObject();
     json.setString("caption","hello");
     myMessage.add(json.toString());
-   // myMessage.add("{'caption': 'hello'}"); /* add a string to the osc message */
-    
-    
-     //OscMessage myMessage = new OscMessage("/caption");
-     //myMessage.add("fdfiez");
-    //oscP5.send(myMessage, myBroadcastLocation); 
+    oscP5.send(myMessage, myBroadcastLocation); 
     break;
   }
 }
 
 // OSC Event: listens to data coming from Runway
 void oscEvent(OscMessage theOscMessage) {
-  /*
+  
 
   // The data is in a JSON string, so first we get the string value
   String dataString = theOscMessage.get(0).stringValue();
@@ -117,7 +112,7 @@ void oscEvent(OscMessage theOscMessage) {
   // We then parse it as a JSONObject
   data = parseJSONObject(dataString);
   println(data);
-  //img = DecodeBase64(data.getString("result"));*/
+  //img = DecodeBase64(data.getString("result"));
 }
 
 
