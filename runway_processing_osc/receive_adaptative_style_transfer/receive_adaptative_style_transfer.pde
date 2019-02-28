@@ -35,7 +35,7 @@ import javax.imageio.ImageIO;
 
 // Runway Host && port
 String runwayHost = "127.0.0.1";
-int runwayPort = 57105;
+int runwayPort = 57104;
 
 OscP5 oscP5;
 NetAddress myBroadcastLocation;
@@ -99,7 +99,7 @@ void keyPressed() {
 
 // OSC Event: listens to data coming from Runway
 void oscEvent(OscMessage theOscMessage) {
-
+ println(theOscMessage);
   // The data is in a JSON string, so first we get the string value
   String dataString = theOscMessage.get(0).stringValue();
  

@@ -95,7 +95,7 @@ void keyPressed() {
     case('s'):
     OscMessage myMessage = new OscMessage("/query");
     JSONObject  json = new JSONObject();
-    json.setString("caption","hello");
+    json.setString("caption","dog");
     myMessage.add(json.toString());
     oscP5.send(myMessage, myBroadcastLocation); 
     break;
@@ -112,7 +112,7 @@ void oscEvent(OscMessage theOscMessage) {
   // We then parse it as a JSONObject
   data = parseJSONObject(dataString);
   println(data);
-  //img = DecodeBase64(data.getString("result"));
+  img = DecodeBase64(data.getString("result"));
 }
 
 
